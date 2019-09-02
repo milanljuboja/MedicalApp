@@ -1,0 +1,64 @@
+<th:block th:fragment="header">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous">
+	<link href="/css/dashboard.css" type="text/css" rel="stylesheet">
+
+</th:block>
+
+<th:block th:fragment="assets">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js"></script>
+</th:block>
+
+<div class="row" th:fragment="frag (param1,param2,param3,param4)">
+	<div class="form-group col-md-1">
+		<select class="form-control pagination" id="pageSizeSelect"
+			th:name="pageSize" onchange="this.form.submit()">
+			<option th:each="pageSize : ${param1}" th:text="${pageSize}"
+				th:value="${pageSize}" th:selected="${pageSize} == ${param2}"></option>
+		</select>
+	</div>
+	<div class="col md-7"></div>
+	<div th:if="${param3.totalPages != 1}"
+		class="form-group col-md-4 pagination-centered">
+		<ul class="pagination">
+			<li th:class="${param3.number == 0} ? disabled"><button
+					class="btn btn-secondary"
+					type="submit"
+					th:name="page" th:value="1">&laquo;</button></li>
+			<li th:class="${param3.number == 0} ? disabled"><button
+					class="btn btn-secondary"
+					type="submit"
+					th:name="page" th:value="${param3.number}">&larr;</button></li>
+			<li
+				th:class="${param3.number == (page - 1)} ? 'active pointer-disabled'"
+				th:each="page : ${#numbers.sequence(param4.startPage, param4.endPage)}">
+				<button class="btn"
+					th:classappend="${page == pageNumber} ? btn-primary : btn-secondary"
+					type="submit"
+					th:name="page" th:value="${page}" th:text="${page}"></button>
+			</li>
+			<li th:class="${param3.number + 1 == param3.totalPages} ? disabled">
+				<button class="btn btn-secondary"
+					type="submit"
+					th:name="page" th:value="${param3.number + 2}">&rarr;</button>
+			</li>
+			<li th:class="${param3.number + 1 == param3.totalPages} ? disabled">
+				<button class="btn btn-secondary"
+					type="submit"
+					th:name="page" th:value="${param3.totalPages}">&raquo;</button>
+			</li>
+		</ul>
+	</div>
+</div>

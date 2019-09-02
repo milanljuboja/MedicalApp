@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Administration of offices</title>
+<th:block th:insert="/fragments/fragments.html :: header">
+</th:block>
+</head>
+<body>
+	<nav
+		class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Stynt</a>
+		<ul class="navbar-nav px-3">
+			<li class="nav-item text-nowrap"><a class="nav-link"
+				th:href="@{/logout}" method="POST">Sign out</a></li>
+		</ul>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item"><a class="nav-link active" href=""
+							th:text="#{dashboard}"> <span data-feather="home"></span><span
+								class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="/officeAdministration"
+							th:text="#{Administration-of-offices}"> <span
+								data-feather="file"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="/administrationOfProffesionals"
+							th:text="#{Administration-of-proffesionals}"> <span
+								data-feather="shopping-cart"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-of-transactions}"> <span
+								data-feather="shopping-cart"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-of-referrals}"> <span
+								data-feather="users"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-of-suspended}"><span
+								data-feather="bar-chart-2"></span> </a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Live-view-job-offers}"> <span
+								data-feather="layers"></span>
+						</a></li>
+						</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Live-view-jobs}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Live-view-permanent-jobs}"> <span
+								data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Revenue-forecast}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Job-match-exploring}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-virtual-jobs}"> <span
+								data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Prevent-matching}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Prevent-system-bypass-notifications}"> <span
+								data-feather="layers"></span>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</body>
+</html>

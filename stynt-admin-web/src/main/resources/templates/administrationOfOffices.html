@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Administration of offices</title>
+<th:block th:insert="/fragments/fragments.html :: header">
+</th:block>
+</head>
+<body>
+	<nav
+		class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Stynt</a>
+		<ul class="navbar-nav px-3">
+			<li class="nav-item text-nowrap"><a class="nav-link"
+				th:href="@{/logout}" method="POST">Sign out</a></li>
+		</ul>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item"><a class="nav-link active" href="/"
+							th:text="#{dashboard}"> <span data-feather="home"></span><span
+								class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href=""
+							th:text="#{Administration-of-offices}"> <span
+								data-feather="file"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/administrationOfProffesionals"
+							th:text="#{Administration-of-proffesionals}"> <span
+								data-feather="shopping-cart"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-of-transactions}"> <span
+								data-feather="shopping-cart"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-of-referrals}"> <span
+								data-feather="users"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-of-suspended}"><span
+								data-feather="bar-chart-2"></span> </a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Live-view-job-offers}"> <span
+								data-feather="layers"></span>
+						</a></li>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Live-view-jobs}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Live-view-permanent-jobs}"> <span
+								data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Revenue-forecast}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Job-match-exploring}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Administration-virtual-jobs}"> <span
+								data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Prevent-matching}"> <span data-feather="layers"></span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="#{Prevent-system-bypass-notifications}"> <span
+								data-feather="layers"></span>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+		<div
+			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<h1 class="h2" th:text="#{h1-title-offices}"></h1>
+		</div>
+		<div class="container-fluid">
+			<form th:action="@{/officeAdministration}" id="form-id" method="GET">
+				<div class="row">
+					<div class="col-lg-5">
+						<h4 th:text="#{search-title}"></h4>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{id}"></span>
+							</div>
+							<input type="text" class="form-control" name='id'
+								th:value="*{id}">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{name}"></span>
+							</div>
+							<input type="text" class="form-control" name='name'
+								th:value="*{name}">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{email}"></span>
+							</div>
+							<input type="text" class="form-control" name='email'
+								th:value="*{email}">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{ZIP-Code}"></span>
+							</div>
+							<input type="text" class="form-control" name='zipCode'
+								th:value="*{zipCode}">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{city}"></span>
+							</div>
+							<input type="text" class="form-control" name='city'
+								th:value="*{city}">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{state}"></span>
+							</div>
+							<input type="text" class="form-control" name='state'
+								th:value="*{state}">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" th:text="#{Phone-number}"></span>
+							</div>
+							<input type="text" class="form-control" name='phoneNumber'
+								th:value="*{phoneNumber}">
+						</div>
+					</div>
+					<div class="col-lg-7">
+						<div class="row">
+							<div class="col-lg-12">
+								<h4 th:text="#{filters-title}"></h4>
+								<h6 th:text="#{filter-by-first}"></h6>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-secondary" id="defaultUnchecked1"
+										th:classappend="${emailActivationStatus == 'ACTIVATED'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='emailActivationStatus'
+										th:checked="${emailActivationStatus == 'ACTIVATED'}"
+										th:value="ACTIVATED" for="defaultUnchecked1"
+										th:text="#{activated}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked2"
+										th:classappend="${status == 'IN_PROFILE_SETUP'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='status'
+										th:checked="${status == 'IN_PROFILE_SETUP'}"
+										th:value="IN_PROFILE_SETUP" for="defaultUnchecked2"
+										th:text="#{In-profile-setup}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked3">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" for="defaultUnchecked3"
+										th:text="#{post-ready}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked4"
+										th:classappend="${identityVerified == '1'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='identityVerified'
+										th:checked="${identityVerified == '1'}" th:value="1"
+										for="defaultUnchecked4" th:text="#{identity-verified}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked5"
+										th:classappend="${identityUnverified == '0'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='identityUnverified'
+										th:checked="${identityUnverified == '0'}" th:value="0"
+										for="defaultUnchecked5" th:text="#{identity-unverified}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked6"
+										th:classappend="${disabled == 'BANNED'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='disabled'
+										th:checked="${disabled == 'BANNED'}" th:value="BANNED"
+										for="defaultUnchecked6" th:text="#{disabled}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked7"
+										th:classappend="${allAccountTypes == '1'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='allAccountTypes'
+										th:checked="${allAccountTypes == '1'}" th:value="1"
+										for="defaultUnchecked7" th:text="#{all}">
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<h6 th:text="#{filter-by-second}"></h6>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-secondary" id="defaultUnchecked8"
+										th:classappend="${medical == '2'} ? active : ''"> <input
+										class="custom-control-input" type="checkbox"
+										autocomplete="off" name='medical'
+										th:checked="${medical == '2'}" th:value="2"
+										for="defaultUnchecked8" th:text="#{medical}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked9"
+										th:classappend="${dental == '1'} ? active : ''"> <input
+										class="custom-control-input" type="checkbox"
+										autocomplete="off" name='dental' th:checked="${dental == '1'}"
+										th:value="1" for="defaultUnchecked9" th:text="#{dental}">
+									</label> <label class="btn btn-secondary" id="defaultUnchecked10"
+										th:classappend="${allProfessions == '1'} ? active : ''">
+										<input class="custom-control-input" type="checkbox"
+										autocomplete="off" name='allProfessions'
+										th:checked="${allProfessions == '1'}" th:value="1"
+										for="defaultUnchecked10" th:text="#{all}">
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-lg-12">
+						<h5 th:text="#{sorting-title}"></h5>
+						<div class="form-row align-items-center">
+							<div class="col-auto my-1">
+								<select class="custom-select mr-sm-2"
+									id="inlineFormCustomSelect" th:name="sortDirection">
+									<option value="ASC" th:selected="${sortDirection} == 'ASC'"
+										th:text="#{first-parameter-of-sorting}"></option>
+									<option value="DESC" th:selected="${sortDirection} == 'DESC'"
+										th:text="#{second-parameter-of-sorting}"></option>
+								</select>
+							</div>
+							<div class="col-auto my-1">
+								<select class="custom-select mr-sm-2"
+									id="inlineFormCustomSelect" th:name="sortBy">
+									<option value="id" th:selected="${sortBy} == 'id'"
+										th:text="#{third-parameter-of-sorting}"></option>
+									<option value="practiceName"
+										th:selected="${sortBy} == 'practiceName'"
+										th:text="#{forth-parameter-of-sorting}"></option>
+									<option value="dateRegistered"
+										th:selected="${sortBy} == 'dateRegistered'"
+										th:text="#{fifth-parameter-of-sorting}"></option>
+									<option value="lastAccess"
+										th:selected="${sortBy} == 'lastAccess'"
+										th:text="#{sixth-parameter-of-sorting}"></option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="search-button">
+					<div class="col-lg-3">
+						<div class="btn-group mr-2">
+							<button type="submit" class="btn btn-primary"
+								th:text="#{search-button}"></button>
+						</div>
+					</div>
+				</div>
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+					<h1 class="h2" th:text="#{title-for-table}"></h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<div class="btn-group mr-2">
+							<button type="submit" class="btn btn-sm btn-outline-secondary"
+								th:text="#{export-to-csv}" name="exportToCsv" th:value="EXPORT"></button>
+							<button type="button" class="btn btn-sm btn-outline-secondary"
+								th:text="#{drop-down-export}"></button>
+							<button type="button" class="btn btn-sm btn-outline-secondary"
+								th:text="#{dwolla-onboarding-report}"></button>
+						</div>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<h2 th:if="${offices.empty}"
+						th:text="#{if-there-are-no-active-offices}"></h2>
+					<div th:if="${!offices.empty}">
+						<table class="table table-striped table-sm">
+							<thead>
+								<tr>
+									<th scope="col" th:text="#{first-field-of-table}"></th>
+									<th scope="col" th:text="#{second-field-of-table}"></th>
+									<th scope="col" th:text="#{third-field-of-table}"></th>
+									<th scope="col" th:text="#{forth-field-of-table}"></th>
+									<th scope="col" th:text="#{fifth-field-of-table}"></th>
+									<th scope="col" th:text="#{sixth-field-of-table}"></th>
+									<th scope="col" th:text="#{seventh-field-of-table}"></th>
+									<th scope="col" th:text="#{eight-field-of-table}"></th>
+									<th scope="col" th:text="#{ninth-field-of-table}"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="office: ${offices}">
+									<td>[[${office.id}]]</td>
+									<td>[[#{email}]]: [[${office.email}]] <br />
+										[[#{Phone-number}]]: [[${office.phoneNumber}]]
+									</td>
+									<td>[[#{office-name}]]: [[${office.name}]]</td>
+									<td>[[#{state}]]: [[${office.stateAddress}]] <br />
+										[[#{address}]]: [[${office.addressLine}]] <br /> [[#{city}]]:
+										[[${office.city}]] <br /> [[#{number-of-offices}]]:
+										[[${office.numberOfClientOffices}]]
+									</td>
+									<td>[[${office.accountType}]]</td>
+									<td>[[#{status}]]: [[${office.status}]] <br />
+										[[#{email-activation-status}]]:
+										[[${office.emailActivationStatus}]] <br />
+										[[#{identity-verification-status}]]:
+										[[${office.identityVerificationStatus}]]
+										<div class="btn-group mr-2">
+											<button type="submit" class="btn btn-sm btn-outline-primary"
+												name="verifyIdentity" th:value="${office.id}"
+												th:text="#{verify-identity}"></button>
+										</div>
+									</td>
+									<td>[[#{registration-date}]]:
+										[[${office.registrationDate}]]</td>
+									<td>[[#{last-access}]]: [[${office.lastAccess}]] <br />
+										[[#{last-web-access}]]: [[${office.lastWebAccess}]] <br />
+										[[#{last-android-access}]]:[[${office.lastAndroidAccess}]] <br />
+										[[#{last-ios-access}]]: [[${office.lastIOSAccess}]]
+									</td>
+									<td><button class="btn btn-primary" th:text="#{details}"></button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div
+					th:replace="/fragments/fragments.html :: frag (${pageSizes},${selectedPageSize},${offices},${pager})">
+				</div>
+			</form>
+		</div>
+		</main>
+	</div>
+	<th:block th:insert="/fragments/fragments.html :: assets">
+	</th:block>
+</body>
+</html>
